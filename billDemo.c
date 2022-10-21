@@ -30,21 +30,23 @@ int main(int argc, char *argv[]){
     // Variables
     char *ptrTax;
     char *ptrTip;
-    int taxPercentage;
-    int tipPercentage;
+    long taxPercentage;
+    long tipPercentage;
+    float tax;
+    float tip;
 
     extern Meal MealTable[];
     extern int MealTableEntries;
-    long priceOfMeal;
+    float priceOfMeal;
+
+    float totalPrice;
 
     srand(time(NULL));
 
     // handle arguments to get tax and tip
-    long taxArg = strtol(argv[1], &ptrTax, 10);
-    long tipArg = strtol(argv[2], &ptrTip, 10);
-    taxPercentage = (int) taxArg;
-    tipPercentage = (int) tipArg;
-
+    taxPercentage = strtol(argv[1], &ptrTax, 10);
+    tipPercentage = strtol(argv[2], &ptrTip, 10);
+    
     // printf("-------------------------------------------\n");
     // for(int i=0; i < argc; i++)
     // {
@@ -55,20 +57,30 @@ int main(int argc, char *argv[]){
     // printf("TIP: %d PERCENT\n", tipPercentage);
     // printf("-------------------------------------------\n");
 
+
     // randomly choose from Meal table for meal
     srand(time(NULL));
     int mealNum = rand() % MealTableEntries;
     priceOfMeal = MealTable[mealNum].price;
-
     // for(int i=0; i < 10; i++)
     // {
     //     printf("[%d]: %s\n", i, MealTable[mealNum].name);
     //     mealNum = rand() % 4;
     // }
 
+    // calculate tax and tip
+    tax = priceOfMeal * ((float)taxPercentage/100.0);
+    tip = priceOfMeal * ((float)tipPercentage/100.0);
+    totalPrice = priceOfMeal + tax + tip;
 
-    // display all necessary info (refer to example output)
+    // display info
+    printf("-------------------------------------------\n");
+    printf("%s: $%.2f\n", MealTable[mealNum].name, priceOfMeal);
+    printf("TAX: $%.2f\n", tax);
+    printf("TIP: $%.2f\n\n", tip);
 
-
+    printf("TOTAL: $%.2f\n", totalPrice);
+    printf("-------------------------------------------\n");
+    
     return EXIT_SUCCESS; 
 } 

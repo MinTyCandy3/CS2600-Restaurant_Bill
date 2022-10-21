@@ -6,7 +6,7 @@ typedef struct {
 
     char *name;
 
-    long price;
+    float price;
 
 } Meal, *PtrToMeal; 
 
