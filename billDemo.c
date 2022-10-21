@@ -30,8 +30,8 @@ int main(int argc, char *argv[]){
     // Variables
     char *ptrTax;
     char *ptrTip;
-    long taxPercentage;
-    long tipPercentage;
+    float taxPercentage;
+    float tipPercentage;
     float tax;
     float tip;
 
@@ -44,8 +44,8 @@ int main(int argc, char *argv[]){
     srand(time(NULL));
 
     // handle arguments to get tax and tip
-    taxPercentage = strtol(argv[1], &ptrTax, 10);
-    tipPercentage = strtol(argv[2], &ptrTip, 10);
+    taxPercentage = strtof(argv[1], &ptrTax);
+    tipPercentage = strtof(argv[2], &ptrTip);
     
     // printf("-------------------------------------------\n");
     // for(int i=0; i < argc; i++)
@@ -69,8 +69,8 @@ int main(int argc, char *argv[]){
     // }
 
     // calculate tax and tip
-    tax = priceOfMeal * ((float)taxPercentage/100.0);
-    tip = priceOfMeal * ((float)tipPercentage/100.0);
+    tax = priceOfMeal * (taxPercentage/100.0);
+    tip = priceOfMeal * (tipPercentage/100.0);
     totalPrice = priceOfMeal + tax + tip;
 
     // display info
@@ -81,6 +81,6 @@ int main(int argc, char *argv[]){
 
     printf("TOTAL: $%.2f\n", totalPrice);
     printf("-------------------------------------------\n");
-    
+
     return EXIT_SUCCESS; 
 } 
