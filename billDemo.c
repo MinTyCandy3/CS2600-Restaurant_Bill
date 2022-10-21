@@ -22,10 +22,6 @@ end of output
 
 // display all necessary info (refer to example output)
 
-
-
-// type Meal should contain: name and price ~ header file
-
 // a data table of type Meal ~ another c file
 /*
 Salad: $9.95
