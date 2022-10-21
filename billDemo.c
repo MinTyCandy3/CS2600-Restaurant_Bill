@@ -46,27 +46,11 @@ int main(int argc, char *argv[]){
     // handle arguments to get tax and tip
     taxPercentage = strtof(argv[1], &ptrTax);
     tipPercentage = strtof(argv[2], &ptrTip);
-    
-    // printf("-------------------------------------------\n");
-    // for(int i=0; i < argc; i++)
-    // {
-    //     printf("Argv [%d]: %s\n", i, argv[i]);
-    // }
-    // printf("-------------------------------------------\n");
-    // printf("TAX: %d PERCENT\n", taxPercentage);
-    // printf("TIP: %d PERCENT\n", tipPercentage);
-    // printf("-------------------------------------------\n");
-
 
     // randomly choose from Meal table for meal
     srand(time(NULL));
     int mealNum = rand() % MealTableEntries;
     priceOfMeal = MealTable[mealNum].price;
-    // for(int i=0; i < 10; i++)
-    // {
-    //     printf("[%d]: %s\n", i, MealTable[mealNum].name);
-    //     mealNum = rand() % 4;
-    // }
 
     // calculate tax and tip
     tax = priceOfMeal * (taxPercentage/100.0);
